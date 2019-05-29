@@ -36,8 +36,8 @@ namespace RAKBank_Parser
 
             var textReader = new System.IO.StringReader(strCSVContent);
             var csvr = new CsvHelper.CsvReader(textReader);
-            csvr.Configuration.PrepareHeaderForMatch = header => header?.Trim();
-            csvr.Configuration.PrepareHeaderForMatch = header => header.Replace(" ", string.Empty);
+            csvr.Configuration.PrepareHeaderForMatch = (string header, int index) => header?.Trim();
+            csvr.Configuration.PrepareHeaderForMatch = (string header, int index) => header.Replace(" ", string.Empty);
             result.CSVRecords = csvr.GetRecords<RAKBankCSVRecord>();
 
             return result;
