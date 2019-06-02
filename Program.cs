@@ -42,7 +42,7 @@ namespace RAKBank_Parser
 
             return result;
         }
-        static List<BankRecord> GetBankRecords(IEnumerable<RAKBankCSVRecord> CSVRecords)
+        static List<BankRecord> GetBankRecordsFromRAKBankCSVRecords(IEnumerable<RAKBankCSVRecord> CSVRecords)
         {
             List<BankRecord> bankRecords = new List<BankRecord>();
 
@@ -95,7 +95,7 @@ namespace RAKBank_Parser
             try
             {
                 varParseRAKBankStatementResult = ParseRAKBankStatement(strFilePath);
-                varParseRAKBankStatementResult.bankRecords = GetBankRecords(varParseRAKBankStatementResult.CSVRecords);
+                varParseRAKBankStatementResult.bankRecords = GetBankRecordsFromRAKBankCSVRecords(varParseRAKBankStatementResult.CSVRecords);
                 WriteCSVFile(varParseRAKBankStatementResult, strFolderPath);
             }
             catch (Exception ex)
